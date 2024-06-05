@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface KeyboardProps {
     currentChar: string;
@@ -6,6 +6,26 @@ interface KeyboardProps {
 }
 
 const Keyboard: React.FC<KeyboardProps> = ({ currentChar, isShiftPressed }) => {
+    const [pressedKey, setPressedKey] = useState<string | null>(null);
+
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            setPressedKey(event.key);
+        };
+
+        const handleKeyUp = () => {
+            setPressedKey(null);
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        window.addEventListener('keyup', handleKeyUp);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('keyup', handleKeyUp);
+        };
+    }, []);
+
     const rows = [
         [
             { normal: '`', shift: '~', width: 'w-12' },
@@ -86,52 +106,49 @@ const Keyboard: React.FC<KeyboardProps> = ({ currentChar, isShiftPressed }) => {
     // rows[i][j].shiftの集合
     const withShifts = rows.flatMap(row => row.map(key => key.shift)).filter(key => key !== undefined);
 
-
     return (
         <div className="flex flex-col items-center">
             {rows.map((row, rowIndex) => (
                 <div key={rowIndex} className="flex space-x-1 mb-1">
-
-
                     {row.map((key, keyIndex) => {
                         const displayChar = isShiftPressed ? key.shift : key.normal;
                         const secondaryChar = isShiftPressed ? key.normal : key.shift;
                         const isSpecialKey = ['tab', 'caps lock', 'shift', 'return', 'delete', 'space', 'command', 'option', 'control', 'fn', '←', '↑', '↓', '→'].includes(key.normal);
                         const isToPress = currentChar === key.normal || currentChar === key.shift || (displayChar === 'shift' && withShifts.includes(currentChar));
-
+                        const isPressed = pressedKey === key.normal || pressedKey === key.shift;
 
                         // isToPressのときの処理
                         // shift同時押しが必要でないキー: 青色にする
                         // shift同時押しが必要なキー: shiftが押されていないときは枠だけ青色、shiftが押されているとき青色にする
                         // shiftキー: 青色にする
 
-                        const styleNormal = "text-black"
-                        const styleToPress = "bg-blue-500 text-white"
-                        const styleToPressWaitingShift = "border border-blue-500"
+                        const styleNormal = "text-black";
+                        const styleToPress = "bg-blue-500 text-white";
+                        const styleToPressWaitingShift = "border border-blue-500";
+                        const stylePressed = "bg-red-500 text-white";
 
                         return (
                             <div
                                 key={keyIndex}
                                 className={`
                                     p-2 border rounded text-center ${key.width}
-                                    ${isToPress ?
-                                        (key.shift === currentChar && !isShiftPressed ?
-                                            styleToPressWaitingShift :
-                                            styleToPress) :
-                                        styleNormal
+                                    ${isPressed ? stylePressed :
+                                        isToPress ?
+                                            (key.shift === currentChar && !isShiftPressed ?
+                                                styleToPressWaitingShift :
+                                                styleToPress) :
+                                            styleNormal
                                     }
-                                `}
+                `}
                                 style={{ position: 'relative' }}
                             >
                                 <span className={`${isSpecialKey ? "text-xxs" : ""}`}>
                                     {displayChar}
                                 </span>
                                 {isSpecialKey ? null : <span className={`absolute top-0 right-0 text-xs text-gray-400`}>{secondaryChar}</span>}
-
                             </div>
                         );
                     })}
-
                 </div>
             ))}
         </div>
