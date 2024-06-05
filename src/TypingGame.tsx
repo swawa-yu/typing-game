@@ -45,7 +45,7 @@ const TypingGame: React.FC = () => {
                 onKeyDown={handleKeyPress}
                 onKeyUp={handleKeyUp}
                 className="border p-2 mb-4"
-                style={{ height: '3rem', lineHeight: '3rem' }} // 高さと行の高さを固定
+                style={{ height: '3rem' }} // 高さと行の高さを固定
             >
                 {input}
             </div>
