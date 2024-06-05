@@ -68,7 +68,7 @@ const TypingGame: React.FC = () => {
                 onKeyDown={handleKeyPress}
                 onKeyUp={handleKeyUp}
                 className="border p-2 mb-4"
-                style={{ height: '3rem', lineHeight: '3rem', position: 'relative' }}
+                style={{ height: '3rem', position: 'relative' }}
             >
                 {isFocused ? input : <span className="text-red-500 absolute inset-0 flex items-center justify-center">Click here to focus and type</span>}
             </div>
