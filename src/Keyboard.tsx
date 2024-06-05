@@ -93,13 +93,13 @@ const Keyboard: React.FC<KeyboardProps> = ({ currentChar, isShiftPressed }) => {
             { normal: 'control', shift: 'control', width: 'w-12' },
             { normal: 'option', shift: 'option', width: 'w-12' },
             { normal: 'command', shift: 'command', width: 'w-16' },
-            { normal: 'space', shift: 'space', width: 'w-72' },
+            { normal: 'space', shift: 'space', width: 'w-64' },
             { normal: 'command', shift: 'command', width: 'w-16' },
             { normal: 'option', shift: 'option', width: 'w-12' },
-            { normal: '←', shift: '←', width: 'w-8' },
-            { normal: '↑', shift: '↑', width: 'w-8' },
-            { normal: '↓', shift: '↓', width: 'w-8' },
-            { normal: '→', shift: '→', width: 'w-8' }
+            { normal: '←', shift: '←', width: 'w-9' },
+            { normal: '↑', shift: '↑', width: 'w-9' },
+            { normal: '↓', shift: '↓', width: 'w-9' },
+            { normal: '→', shift: '→', width: 'w-9' }
         ]
     ];
 
