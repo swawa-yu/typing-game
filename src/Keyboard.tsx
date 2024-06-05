@@ -99,22 +99,35 @@ const Keyboard: React.FC<KeyboardProps> = ({ currentChar, isShiftPressed }) => {
                         const isSpecialKey = ['tab', 'caps lock', 'shift', 'return', 'delete', 'space', 'command', 'option', 'control', 'fn', '←', '↑', '↓', '→'].includes(key.normal);
                         const isToPress = currentChar === key.normal || currentChar === key.shift || (displayChar === 'shift' && withShifts.includes(currentChar));
 
+
+                        // isToPressのときの処理
+                        // shift同時押しが必要でないキー: 青色にする
+                        // shift同時押しが必要なキー: shiftが押されていないときは枠だけ青色、shiftが押されているとき青色にする
+                        // shiftキー: 青色にする
+
+                        const styleNormal = "text-black"
+                        const styleToPress = "bg-blue-500 text-white"
+                        const styleToPressWaitingShift = "border border-blue-500"
+
                         return (
                             <div
                                 key={keyIndex}
-                                className={`p-2 border rounded text-center ${key.width} ${isToPress ? 'bg-blue-500 text-white' : ''}`}
+                                className={`
+                                    p-2 border rounded text-center ${key.width}
+                                    ${isToPress ?
+                                        (key.shift === currentChar && !isShiftPressed ?
+                                            styleToPressWaitingShift :
+                                            styleToPress) :
+                                        styleNormal
+                                    }
+                                `}
                                 style={{ position: 'relative' }}
                             >
-                                {isSpecialKey ? (
-                                    <span className="text-xxs">{displayChar}</span>
-                                ) : (
-                                    <>
-                                        <span className={`text-black`}>{displayChar}</span>
-                                        <span className={`absolute top-0 right-0 text-xs text-gray-400`}>
-                                            {secondaryChar}
-                                        </span>
-                                    </>
-                                )}
+                                <span className={`${isSpecialKey ? "text-xxs" : ""}`}>
+                                    {displayChar}
+                                </span>
+                                {isSpecialKey ? null : <span className={`absolute top-0 right-0 text-xs text-gray-400`}>{secondaryChar}</span>}
+
                             </div>
                         );
                     })}

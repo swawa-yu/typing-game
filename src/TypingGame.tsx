@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Keyboard from './Keyboard';
 
-const words = ['apple', 'banana', 'cherry', 'date', 'fig', 'grape'];
+const words = ['apple', 'banana', 'cherry', 'Date', 'Fig', 'grape'];
 const TypingGame: React.FC = () => {
     const [currentWord, setCurrentWord] = useState('');
     const [input, setInput] = useState('');
