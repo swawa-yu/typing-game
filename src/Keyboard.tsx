@@ -8,98 +8,108 @@ interface KeyboardProps {
 const Keyboard: React.FC<KeyboardProps> = ({ currentChar, isShiftPressed }) => {
     const rows = [
         [
-            { normal: '1', shift: '!' },
-            { normal: '2', shift: '@' },
-            { normal: '3', shift: '#' },
-            { normal: '4', shift: '$' },
-            { normal: '5', shift: '%' },
-            { normal: '6', shift: '^' },
-            { normal: '7', shift: '&' },
-            { normal: '8', shift: '*' },
-            { normal: '9', shift: '(' },
-            { normal: '0', shift: ')' },
-            { normal: '-', shift: '_' },
-            { normal: '=', shift: '+' },
-            { normal: 'delete', shift: 'delete' }
+            { normal: '`', shift: '~', width: 'w-12' },
+            { normal: '1', shift: '!', width: 'w-12' },
+            { normal: '2', shift: '@', width: 'w-12' },
+            { normal: '3', shift: '#', width: 'w-12' },
+            { normal: '4', shift: '$', width: 'w-12' },
+            { normal: '5', shift: '%', width: 'w-12' },
+            { normal: '6', shift: '^', width: 'w-12' },
+            { normal: '7', shift: '&', width: 'w-12' },
+            { normal: '8', shift: '*', width: 'w-12' },
+            { normal: '9', shift: '(', width: 'w-12' },
+            { normal: '0', shift: ')', width: 'w-12' },
+            { normal: '-', shift: '_', width: 'w-12' },
+            { normal: '=', shift: '+', width: 'w-12' },
+            { normal: 'delete', shift: 'delete', width: 'w-20' }
         ],
         [
-            { normal: 'q', shift: 'Q' },
-            { normal: 'w', shift: 'W' },
-            { normal: 'e', shift: 'E' },
-            { normal: 'r', shift: 'R' },
-            { normal: 't', shift: 'T' },
-            { normal: 'y', shift: 'Y' },
-            { normal: 'u', shift: 'U' },
-            { normal: 'i', shift: 'I' },
-            { normal: 'o', shift: 'O' },
-            { normal: 'p', shift: 'P' },
-            { normal: '[', shift: '{' },
-            { normal: ']', shift: '}' },
-            { normal: '\\', shift: '|' }
+            { normal: 'tab', shift: 'tab', width: 'w-20' },
+            { normal: 'q', shift: 'Q', width: 'w-12' },
+            { normal: 'w', shift: 'W', width: 'w-12' },
+            { normal: 'e', shift: 'E', width: 'w-12' },
+            { normal: 'r', shift: 'R', width: 'w-12' },
+            { normal: 't', shift: 'T', width: 'w-12' },
+            { normal: 'y', shift: 'Y', width: 'w-12' },
+            { normal: 'u', shift: 'U', width: 'w-12' },
+            { normal: 'i', shift: 'I', width: 'w-12' },
+            { normal: 'o', shift: 'O', width: 'w-12' },
+            { normal: 'p', shift: 'P', width: 'w-12' },
+            { normal: '[', shift: '{', width: 'w-12' },
+            { normal: ']', shift: '}', width: 'w-12' },
+            { normal: '\\', shift: '|', width: 'w-12' }
         ],
         [
-            { normal: 'a', shift: 'A' },
-            { normal: 's', shift: 'S' },
-            { normal: 'd', shift: 'D' },
-            { normal: 'f', shift: 'F' },
-            { normal: 'g', shift: 'G' },
-            { normal: 'h', shift: 'H' },
-            { normal: 'j', shift: 'J' },
-            { normal: 'k', shift: 'K' },
-            { normal: 'l', shift: 'L' },
-            { normal: ';', shift: ':' },
-            { normal: '\'', shift: '"' },
-            { normal: 'return', shift: 'return' }
+            { normal: 'caps lock', shift: 'caps lock', width: 'w-24' },
+            { normal: 'a', shift: 'A', width: 'w-12' },
+            { normal: 's', shift: 'S', width: 'w-12' },
+            { normal: 'd', shift: 'D', width: 'w-12' },
+            { normal: 'f', shift: 'F', width: 'w-12' },
+            { normal: 'g', shift: 'G', width: 'w-12' },
+            { normal: 'h', shift: 'H', width: 'w-12' },
+            { normal: 'j', shift: 'J', width: 'w-12' },
+            { normal: 'k', shift: 'K', width: 'w-12' },
+            { normal: 'l', shift: 'L', width: 'w-12' },
+            { normal: ';', shift: ':', width: 'w-12' },
+            { normal: '\'', shift: '"', width: 'w-12' },
+            { normal: 'return', shift: 'return', width: 'w-24' }
         ],
         [
-            { normal: 'shift', shift: 'shift' },
-            { normal: 'z', shift: 'Z' },
-            { normal: 'x', shift: 'X' },
-            { normal: 'c', shift: 'C' },
-            { normal: 'v', shift: 'V' },
-            { normal: 'b', shift: 'B' },
-            { normal: 'n', shift: 'N' },
-            { normal: 'm', shift: 'M' },
-            { normal: ',', shift: '<' },
-            { normal: '.', shift: '>' },
-            { normal: '/', shift: '?' },
-            { normal: 'shift', shift: 'shift' }
+            { normal: 'shift', shift: 'shift', width: 'w-28' },
+            { normal: 'z', shift: 'Z', width: 'w-12' },
+            { normal: 'x', shift: 'X', width: 'w-12' },
+            { normal: 'c', shift: 'C', width: 'w-12' },
+            { normal: 'v', shift: 'V', width: 'w-12' },
+            { normal: 'b', shift: 'B', width: 'w-12' },
+            { normal: 'n', shift: 'N', width: 'w-12' },
+            { normal: 'm', shift: 'M', width: 'w-12' },
+            { normal: ',', shift: '<', width: 'w-12' },
+            { normal: '.', shift: '>', width: 'w-12' },
+            { normal: '/', shift: '?', width: 'w-12' },
+            { normal: 'shift', shift: 'shift', width: 'w-32' }
         ],
         [
-            { normal: 'fn', shift: 'fn' },
-            { normal: 'control', shift: 'control' },
-            { normal: 'option', shift: 'option' },
-            { normal: 'command', shift: 'command' },
-            { normal: 'space', shift: 'space' },
-            { normal: 'command', shift: 'command' },
-            { normal: 'option', shift: 'option' },
-            { normal: 'left', shift: 'left' },
-            { normal: 'up', shift: 'up' },
-            { normal: 'down', shift: 'down' },
-            { normal: 'right', shift: 'right' }
+            { normal: 'fn', shift: 'fn', width: 'w-12' },
+            { normal: 'control', shift: 'control', width: 'w-12' },
+            { normal: 'option', shift: 'option', width: 'w-12' },
+            { normal: 'command', shift: 'command', width: 'w-16' },
+            { normal: 'space', shift: 'space', width: 'w-72' },
+            { normal: 'command', shift: 'command', width: 'w-16' },
+            { normal: 'option', shift: 'option', width: 'w-12' },
+            { normal: '←', shift: '←', width: 'w-8' },
+            { normal: '↑', shift: '↑', width: 'w-8' },
+            { normal: '↓', shift: '↓', width: 'w-8' },
+            { normal: '→', shift: '→', width: 'w-8' }
         ]
     ];
+
+    // rows[i][j].shiftの集合
+    const withShifts = rows.flatMap(row => row.map(key => key.shift)).filter(key => key !== undefined);
+
 
     return (
         <div className="flex flex-col items-center">
             {rows.map((row, rowIndex) => (
                 <div key={rowIndex} className="flex space-x-1 mb-1">
+
+
                     {row.map((key, keyIndex) => {
                         const displayChar = isShiftPressed ? key.shift : key.normal;
                         const secondaryChar = isShiftPressed ? key.normal : key.shift;
-                        const isSpecialKey = ['shift', 'return', 'delete', 'space', 'command', 'option', 'control', 'fn', 'left', 'up', 'down', 'right'].includes(key.normal);
+                        const isSpecialKey = ['tab', 'caps lock', 'shift', 'return', 'delete', 'space', 'command', 'option', 'control', 'fn', '←', '↑', '↓', '→'].includes(key.normal);
+                        const isToPress = currentChar === key.normal || currentChar === key.shift || (displayChar === 'shift' && withShifts.includes(currentChar));
 
                         return (
                             <div
                                 key={keyIndex}
-                                className={`p-2 border rounded text-center ${currentChar === displayChar ? 'bg-blue-500 text-white' : ''}`}
-                                style={{ minWidth: '2.5rem', position: 'relative' }}
+                                className={`p-2 border rounded text-center ${key.width} ${isToPress ? 'bg-blue-500 text-white' : ''}`}
+                                style={{ position: 'relative' }}
                             >
                                 {isSpecialKey ? (
-                                    <span>{displayChar}</span>
+                                    <span className="text-xxs">{displayChar}</span>
                                 ) : (
                                     <>
-                                        <span className={`'text-black'`}>{displayChar}</span>
+                                        <span className={`text-black`}>{displayChar}</span>
                                         <span className={`absolute top-0 right-0 text-xs text-gray-400`}>
                                             {secondaryChar}
                                         </span>
@@ -108,10 +118,11 @@ const Keyboard: React.FC<KeyboardProps> = ({ currentChar, isShiftPressed }) => {
                             </div>
                         );
                     })}
+
                 </div>
             ))}
         </div>
     );
-};
+}
 
 export default Keyboard;
