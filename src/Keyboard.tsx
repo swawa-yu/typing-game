@@ -5,16 +5,24 @@ interface KeyboardProps {
 }
 
 const Keyboard: React.FC<KeyboardProps> = ({ currentChar }) => {
-    const keys = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    const rows = [
+        'qwertyuiop',
+        'asdfghjkl',
+        'zxcvbnm'
+    ];
 
     return (
-        <div className="grid grid-cols-10 gap-1">
-            {keys.map((key) => (
-                <div
-                    key={key}
-                    className={`p-2 border rounded ${currentChar === key ? 'bg-blue-500 text-white' : ''}`}
-                >
-                    {key}
+        <div className="flex flex-col items-center">
+            {rows.map((row, rowIndex) => (
+                <div key={rowIndex} className="flex space-x-1 mb-1">
+                    {row.split('').map((key) => (
+                        <div
+                            key={key}
+                            className={`p-2 border rounded ${currentChar === key ? 'bg-blue-500 text-white' : ''}`}
+                        >
+                            {key}
+                        </div>
+                    ))}
                 </div>
             ))}
         </div>
