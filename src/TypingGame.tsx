@@ -8,7 +8,7 @@ const TypingGame: React.FC = () => {
     const [input, setInput] = useState('');
     const [score, setScore] = useState(0);
     const [isShiftPressed, setIsShiftPressed] = useState(false);
-    const [isFocused, setIsFocused] = useState(true);
+    const [isFocused, setIsFocused] = useState(false);
 
     const inputRef = useRef<HTMLDivElement>(null);
 
@@ -24,6 +24,13 @@ const TypingGame: React.FC = () => {
         if (inputElement) {
             inputElement.addEventListener('focus', handleFocus);
             inputElement.addEventListener('blur', handleBlur);
+
+            // 初回レンダリング時にフォーカスがあるかをチェック
+            if (document.activeElement !== inputElement) {
+                setIsFocused(false);
+            } else {
+                setIsFocused(true);
+            }
         }
 
         return () => {
